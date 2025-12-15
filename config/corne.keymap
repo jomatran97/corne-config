@@ -11,6 +11,7 @@
 #define HYPER LC(LA(LS(LGUI)))
 
 // Định nghĩa tên các Layer
+
 #define DEF 0
 #define LWR 1
 #define RSE 2
@@ -18,8 +19,10 @@
 
 / {
     // 1. Tự động kích hoạt Layer Adjust khi giữ đồng thời Lower + Raise
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
+
         tri_layer {
             if-layers = <LWR RSE>;
             then-layer = <ADJ>;
@@ -28,6 +31,7 @@
 
     behaviors {
         // Cấu hình phím đa năng: Giữ là Hyper, gõ nhẹ là Tab
+
         mt_hyper_tab: mt_hyper_tab {
             compatible = "zmk,behavior-hold-tap";
             label = "MOD_TAP_HYPER_TAB";
@@ -49,11 +53,12 @@
             // |HYPER/TB|  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
             // | SHFT   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | CTRL |
             //                    | ALT | RSE | CMD |   | SPC | LWR  | ENT |
+
             bindings = <
-&kp ESC                  &kp Q  &kp W  &kp E      &kp R  &kp T        &kp Y       &kp U  &kp I      &kp O    &kp P      &kp BSPC
-&mt_hyper_tab HYPER TAB  &kp A  &kp S  &kp D      &kp F  &kp G        &kp H       &kp J  &kp K      &kp L    &kp SEMI   &kp SQT
-&kp LSHFT                &kp Z  &kp X  &kp C      &kp V  &kp B        &kp N       &kp M  &kp COMMA  &kp DOT  &kp FSLH   &kp LCTRL
-                                       &kp LALT   &mo 2  &kp LGUI     &kp SPACE   &mo 1  &kp RET
+&kp ESC                  &kp Q  &kp W  &kp E     &kp R  &kp T       &kp Y      &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&mt_hyper_tab HYPER TAB  &kp A  &kp S  &kp D     &kp F  &kp G       &kp H      &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT                &kp Z  &kp X  &kp C     &kp V  &kp B       &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp LCTRL
+                                       &kp LALT  &mo 2  &kp LGUI    &kp SPACE  &mo 1  &kp RET
             >;
         };
 
@@ -64,11 +69,12 @@
             // |      | F1  | F2  | F3  | F4  | F5  |   | LFT | DWN |  UP | RGT |     |      |
             // | SHFT | F6  | F7  | F8  | F9  | F10 |   | HOME| PGDN| PGUP| END |     | F12  |
             //                    |     |     |     |   |     |     |     |
+
             bindings = <
-&trans     &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp DEL
-&trans     &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10   &kp HOME  &kp PG_DN &kp PG_UP &kp END    &trans  &kp F12
-                           &trans  &trans  &trans    &trans    &trans    &trans
+&trans     &kp N1  &kp N2  &kp N3  &kp N4  &kp N5     &kp N6    &kp N7     &kp N8     &kp N9     &kp N0  &kp DEL
+&trans     &kp F1  &kp F2  &kp F3  &kp F4  &kp F5     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
+&kp LSHFT  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans  &kp F12
+                           &trans  &trans  &trans     &trans    &trans     &trans
             >;
         };
 
@@ -79,11 +85,12 @@
             // | CTRL | MUTE| SHOT| VOL-| VOL+| PLAY|   |  -  |  =  |  [  |  ]  |  \  |  `   |
             // | SHFT |  _  |  +  | PREV| NEXT| BRI+|   |  <  |  >  |  {  |  }  | "|" |  ~   |
             //                    |     |     |     |   |     |     |     |
+
             bindings = <
-&trans     &kp EXCL    &kp AT          &kp HASH      &kp DLLR      &kp PRCNT       &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
-&trans     &kp C_MUTE  &kp LG(LS(N4))  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PP        &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &kp UNDER   &kp PLUS        &kp C_PREV    &kp C_NEXT    &kp C_BRI_UP    &kp LT     &kp GT     &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                                       &trans        &trans        &trans          &trans     &trans     &trans
+&trans     &kp EXCL    &kp AT    &kp HASH      &kp DLLR      &kp PRCNT       &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
+&trans     &kp C_MUTE  &none     &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PP        &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &kp UNDER   &kp PLUS  &kp C_PREV    &kp C_NEXT    &kp C_BRI_UP    &kp LT     &kp GT     &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                                 &trans        &trans        &trans          &trans     &trans     &trans
             >;
         };
 
@@ -95,6 +102,7 @@
             // | BTCLR| CAPS|     |     |     |     |   |     |     |     |     |     |      |
             // |      |     |     |     |     |     |   |     |     |     |     | BOOT| RESET|
             //                    |     |     |     |   |     |     |     |
+
             bindings = <
 &trans      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans       &trans
 &bt BT_CLR  &kp CAPS      &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans       &trans
@@ -103,4 +111,4 @@
             >;
         };
     };
-};  
+};
